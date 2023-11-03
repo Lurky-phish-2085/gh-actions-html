@@ -25,4 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm i
-    - run: npm run start --if-present
+    - run: npx pm2 delete "test"
+    - run: npx pm2 start npm --name "test" -- start
+    - run: npx pm2 save
